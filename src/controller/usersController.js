@@ -54,7 +54,9 @@ const acess = (req, res) => {
     if (!name) {
         return res.status(400).json({ message: 'Favor colocar dados corretamente' }); 
     }
-    res.status(200).jason({ message: `Usuário ${name}  foi lido 0 vezes.` });
+    const index = data.findIndex((d) => d.name.split(' ')[0] === name);
+
+    res.status(200).json({ message: `Usuário ${name}  foi lido ${data[index].quantity} vezes.` });
 };
 
 module.exports = { getUsers, create, remove, atualização, acess };
